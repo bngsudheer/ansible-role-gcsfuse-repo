@@ -1,6 +1,6 @@
 galaxy_info:
   author: Sudheer Satyanarayana
-  description: IT Consultant
+  description: Install Google Cloud Storage Fuse yum repository.
   company: Gavika Information Technologies Pvt. Ltd.
 
   issue_tracker_url: https://github.com/bngsudheer/ansible-role-gcsfuse-repo/issues

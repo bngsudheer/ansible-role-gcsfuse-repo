@@ -34,7 +34,7 @@ Example Playbook
 
     - hosts: servers
       tasks:
-        - name: install gcsfuse
+        - name: gcsfuse
           yum:
             name: gcsfuse
 ```
