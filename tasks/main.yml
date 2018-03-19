@@ -9,7 +9,7 @@
       - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
     gpgcheck: true
     repo_gpgcheck: true
-    register: add_repo
+  register: add_repo
 
 - name: Import the RPM keys
   rpm_key:
