@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: ansible-role-gcsfuse-repo
+  post_tasks:
+    - name: install gcsfuse
+      yum:
+        name: gcsfuse

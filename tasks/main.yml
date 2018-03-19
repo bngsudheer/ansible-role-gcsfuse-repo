@@ -1,0 +1,27 @@
+---
+- name: Add the yum repository
+  yum_repository:
+    name: gcsfuse
+    description: Google Cloud Storage Fuse
+    baseurl: https://packages.cloud.google.com/yum/repos/gcsfuse-el7-x86_64
+    gpgkey:
+      - https://packages.cloud.google.com/yum/doc/yum-key.gpg
+      - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+    gpgcheck: true
+    repo_gpgcheck: true
+
+- name: Import the RPM keys
+  rpm_key:
+    state: present
+    key: "{{ item }}"
+  with_items:
+    - https://packages.cloud.google.com/yum/doc/yum-key.gpg
+    - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+  register: import_key
+
+# See https://github.com/ansible/ansible/issues/20711
+- name: Make cache
+  command: "yum -q makecache -y --disablerepo='*' --enablerepo='gcsfuse'"
+  when: import_key.changed
+  tags:
+    - skip_ansible_lint
