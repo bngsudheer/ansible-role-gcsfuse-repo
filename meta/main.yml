@@ -3,7 +3,6 @@ galaxy_info:
   description: IT Consultant
   company: Gavika Information Technologies Pvt. Ltd.
 
-
   issue_tracker_url: https://github.com/bngsudheer/ansible-role-gcsfuse-repo/issues
 
   license: BSD
