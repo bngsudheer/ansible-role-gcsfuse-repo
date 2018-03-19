@@ -9,6 +9,7 @@
       - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
     gpgcheck: true
     repo_gpgcheck: true
+    register: add_repo
 
 - name: Import the RPM keys
   rpm_key:
@@ -22,6 +23,6 @@
 # See https://github.com/ansible/ansible/issues/20711
 - name: Make cache
   command: "yum -q makecache -y --disablerepo='*' --enablerepo='gcsfuse'"
-  when: import_key.changed
+  when: import_key.changed or add_repo.changed
   tags:
     - skip_ansible_lint
